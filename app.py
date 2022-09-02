@@ -16,7 +16,7 @@ st.write("""
 Visually show data on crypto (BTC-JPY, DOGE-JPY, ETH-JPY, XTZ-JPY, XRP-JPY, XRP-JPY, LTC-JPY, XEM-JPY)
 """)
 
-image = Image.open('crypto_image3.PNG')
+image = Image.open('crypto_image3.png')
 st.image(image, use_column_width=True)
 
 st.sidebar.header("User Input")
