@@ -97,7 +97,10 @@ def get_data(symbol, start, end):
         df = pd.read_csv('XEM.csv')
     else:
         df = pd.DataFrame(columns=['Date', 'Close', 'Open', 'Volume', 'Adj Close'])
-    start = pd.to_datetime(df['Date'])
+    start = pd.to_datetime(start)
+    end = pd.to_datetime(end)
+
+    df['Date'] = pd.to_datetime(df['Date'])
     df = df.set_index('Date')
 
     return df.loc[start:end]
@@ -177,7 +180,7 @@ def predict_crypto():
     for data in predict_data:
         next_date = datetime.datetime.fromtimestamp(next_unix)
         next_unix += one_day
-        df.loc[next_date] = np.append([np.nan]* (len(df.colums)-1), data)
+        df.loc[next_date] = np.append([np.nan]* (len(df.columns)-1), data)
 
     df['Close'].plot(figsize=(15, 6), color='green')
     df['Predict'].plot(figsize=(15, 6), color='orange')
